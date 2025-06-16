@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4624664988085047354}
-  - component: {fileID: 6320976004497420358}
+  - component: {fileID: 5784040791160049258}
   m_Layer: 0
   m_Name: TurretPivot
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 6430632954193308938}
   m_Father: {fileID: 8409344065546756772}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6320976004497420358
+--- !u!114 &5784040791160049258
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,7 +42,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1031903600905073899}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Script: {fileID: 11500000, guid: a8fd81da840d40846b659507d16d7401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SyncPositionX: 0
@@ -73,7 +73,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8409344065546756772}
   - component: {fileID: 5948210261857416863}
-  - component: {fileID: -2700613640877515902}
+  - component: {fileID: 2903363282466511567}
+  - component: {fileID: 2774051468187354739}
+  - component: {fileID: 5053609404703934350}
+  - component: {fileID: 6492297828565041833}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -118,7 +121,7 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &-2700613640877515902
+--- !u!114 &2903363282466511567
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,7 +130,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1479232640620671169}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Script: {fileID: 11500000, guid: a8fd81da840d40846b659507d16d7401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SyncPositionX: 1
@@ -148,6 +151,64 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   SlerpPosition: 0
+--- !u!50 &2774051468187354739
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479232640620671169}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 1
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &5053609404703934350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479232640620671169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0fc46bd8a530464fb7fd3a5dc996453, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputSO: {fileID: 11400000, guid: 6557a6d71a47ab447909a911167ab573, type: 2}
+  _playerSO: {fileID: 11400000, guid: 6b7be2d254da9f94ca573f160af8dd60, type: 2}
+  _playerTransform: {fileID: 7452619983547835357}
+  _playerBody: {fileID: 2774051468187354739}
+--- !u!114 &6492297828565041833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479232640620671169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 654dc2ad02298734180354a89da841eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputSO: {fileID: 11400000, guid: 6557a6d71a47ab447909a911167ab573, type: 2}
+  _turretTransform: {fileID: 4624664988085047354}
+  _mainCamera: {fileID: 0}
 --- !u!1 &2803518649790648814
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,7 +219,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7452619983547835357}
   - component: {fileID: 4514962412410548523}
-  - component: {fileID: 875323939199195962}
+  - component: {fileID: 8005565386052308784}
   - component: {fileID: 1507640682057055178}
   m_Layer: 0
   m_Name: TankTreads
@@ -235,7 +296,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &875323939199195962
+--- !u!114 &8005565386052308784
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -244,7 +305,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2803518649790648814}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Script: {fileID: 11500000, guid: a8fd81da840d40846b659507d16d7401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SyncPositionX: 0
