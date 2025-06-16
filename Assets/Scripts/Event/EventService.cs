@@ -6,6 +6,7 @@ namespace Game.Event
     public class EventService : GenericMonoSingleton<EventService>
     {
         public EventController<bool> OnPrimaryFireEvent { get; private set; }
+        public EventController<Health> OnDeathEvent { get; private set; }
         public EventController<Vector2> OnPlayerMoveEvent { get; private set; }
 
         protected override void Awake()
@@ -18,6 +19,7 @@ namespace Game.Event
         private void InitializeEvents()
         {
             OnPrimaryFireEvent = new EventController<bool>();
+            OnDeathEvent = new EventController<Health>();
             OnPlayerMoveEvent = new EventController<Vector2>();
         }
     }

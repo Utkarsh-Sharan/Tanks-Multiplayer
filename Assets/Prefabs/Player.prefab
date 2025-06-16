@@ -78,6 +78,7 @@ GameObject:
   - component: {fileID: 5053609404703934350}
   - component: {fileID: 6492297828565041833}
   - component: {fileID: 1072052487241449795}
+  - component: {fileID: 4799255600593533547}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -226,6 +227,21 @@ MonoBehaviour:
   _projectileSpawnPosition: {fileID: 9111301589912093850}
   _muzzleFlashObject: {fileID: 2556881680203098850}
   _playerCollider: {fileID: 1507640682057055178}
+--- !u!114 &4799255600593533547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479232640620671169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c6ad4a4bc5736f46b1e3fd55a8cec05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <MaxHealth>k__BackingField: 100
+  CurrentHealth:
+    m_InternalValue: 0
 --- !u!1 &2556881680203098850
 GameObject:
   m_ObjectHideFlags: 0
