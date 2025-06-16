@@ -8,5 +8,7 @@ namespace Game.ScriptableObj
         public GameObject ServerProjectilePrefab;
         public GameObject ClientProjectilePrefab;
         public float ProjectileSpeed;
+        public float FireRate;
+        public float MuzzleFlashDuration;
     }
 }

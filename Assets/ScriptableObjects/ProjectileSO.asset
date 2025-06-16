@@ -15,3 +15,5 @@ MonoBehaviour:
   ServerProjectilePrefab: {fileID: 5057161280121594237, guid: 5688576076872ef47b9d90cc1556113a, type: 3}
   ClientProjectilePrefab: {fileID: 5253765485658069671, guid: 7ef36a340afbb814eaa3dd61c0bea834, type: 3}
   ProjectileSpeed: 30
+  FireRate: 0.75
+  MuzzleFlashDuration: 0.075

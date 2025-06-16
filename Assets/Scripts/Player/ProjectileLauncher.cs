@@ -2,7 +2,6 @@ using Unity.Netcode;
 using UnityEngine;
 using Game.ScriptableObj;
 using Game.Event;
-using System;
 
 namespace Game.Player
 {
@@ -11,8 +10,12 @@ namespace Game.Player
         [SerializeField] private InputScriptableObject _inputSO;
         [SerializeField] private ProjectileScriptableObject _projectileSO;
         [SerializeField] private Transform _projectileSpawnPosition;
+        [SerializeField] private GameObject _muzzleFlashObject;
+        [SerializeField] private Collider2D _playerCollider;
 
         private bool _shouldFire;
+        private float _previousFireTime;
+        private float _muzzleFlashTimer;
 
         public override void OnNetworkSpawn()
         {
@@ -29,14 +32,27 @@ namespace Game.Player
 
         private void Update()
         {
+            if(_muzzleFlashTimer > 0f)
+            {
+                _muzzleFlashTimer -= Time.deltaTime;
+
+                if(_muzzleFlashTimer <= 0f)
+                    _muzzleFlashObject.SetActive(false);
+            }
+
             if (!IsOwner)
                 return;
 
             if (!_shouldFire)
                 return;
 
+            if (Time.time < 1 / _projectileSO.FireRate + _previousFireTime)
+                return;
+
             PrimaryFireServerRpc(_projectileSpawnPosition.position, _projectileSpawnPosition.up);
             SpawnDummyProjectile(_projectileSpawnPosition.position, _projectileSpawnPosition.up);
+
+            _previousFireTime = Time.time;
         }
 
         [ServerRpc]
@@ -44,6 +60,11 @@ namespace Game.Player
         {
             GameObject projectile = Instantiate(_projectileSO.ServerProjectilePrefab, spawnPos, Quaternion.identity);
             projectile.transform.up = direction;
+
+            Physics2D.IgnoreCollision(_playerCollider, projectile.GetComponent<Collider2D>());
+
+            if (projectile.TryGetComponent<Rigidbody2D>(out Rigidbody2D rb))
+                rb.velocity = rb.transform.up * _projectileSO.ProjectileSpeed;
 
             SpawnDummyProjectileClientRpc(spawnPos, direction);
         }
@@ -59,8 +80,16 @@ namespace Game.Player
 
         private void SpawnDummyProjectile(Vector3 spawnPos, Vector3 direction)
         {
+            _muzzleFlashObject.SetActive(true);
+            _muzzleFlashTimer = _projectileSO.MuzzleFlashDuration;
+
             GameObject projectile = Instantiate(_projectileSO.ClientProjectilePrefab, spawnPos, Quaternion.identity);
             projectile.transform.up = direction;
+
+            Physics2D.IgnoreCollision(_playerCollider, projectile.GetComponent<Collider2D>());
+
+            if(projectile.TryGetComponent<Rigidbody2D>(out Rigidbody2D rb))
+                rb.velocity = rb.transform.up * _projectileSO.ProjectileSpeed;
         }
 
         public override void OnNetworkDespawn()
