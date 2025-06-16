@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 using Game.Event;
 using static Controls;
 
-namespace Game.ScriptableObj.Input
+namespace Game.ScriptableObj
 {
     [CreateAssetMenu(fileName = "InputScriptableObject", menuName = "ScriptableObject/InputScriptableObject")]
     public class InputScriptableObject : ScriptableObject, IPlayerActions

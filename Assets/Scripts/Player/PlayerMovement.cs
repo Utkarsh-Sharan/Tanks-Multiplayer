@@ -1,8 +1,7 @@
 using Unity.Netcode;
 using UnityEngine;
 using Game.Event;
-using Game.ScriptableObj.Input;
-using Game.ScriptableObj.Player;
+using Game.ScriptableObj;
 
 namespace Game.Player
 {

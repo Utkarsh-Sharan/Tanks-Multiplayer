@@ -77,6 +77,7 @@ GameObject:
   - component: {fileID: 2774051468187354739}
   - component: {fileID: 5053609404703934350}
   - component: {fileID: 6492297828565041833}
+  - component: {fileID: 1072052487241449795}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -208,7 +209,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inputSO: {fileID: 11400000, guid: 6557a6d71a47ab447909a911167ab573, type: 2}
   _turretTransform: {fileID: 4624664988085047354}
-  _mainCamera: {fileID: 0}
+--- !u!114 &1072052487241449795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479232640620671169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d58dd82ef0fecf8468332defdc83c4e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputSO: {fileID: 11400000, guid: 6557a6d71a47ab447909a911167ab573, type: 2}
+  _projectileSO: {fileID: 11400000, guid: 19ae957f46304fb49bac2d7433749248, type: 2}
+  _projectileSpawnPosition: {fileID: 9111301589912093850}
 --- !u!1 &2803518649790648814
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,6 +470,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &6692144262380852433
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9111301589912093850}
+  m_Layer: 0
+  m_Name: ProjectileSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9111301589912093850
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6692144262380852433}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6430632954193308938}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8866313984276671265
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,7 +530,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.425, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 9111301589912093850}
   m_Father: {fileID: 4624664988085047354}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5653104394602056812

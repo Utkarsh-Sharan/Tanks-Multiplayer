@@ -1,6 +1,6 @@
 using Unity.Netcode;
 using UnityEngine;
-using Game.ScriptableObj.Input;
+using Game.ScriptableObj;
 
 namespace Game.Player
 {
