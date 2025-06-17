@@ -2,6 +2,7 @@ using Unity.Netcode;
 using UnityEngine;
 using Game.ScriptableObj;
 using Game.Event;
+using Game.Heal;
 
 namespace Game.Player
 {
@@ -63,7 +64,10 @@ namespace Game.Player
 
             Physics2D.IgnoreCollision(_playerCollider, projectile.GetComponent<Collider2D>());
 
-            if (projectile.TryGetComponent<Rigidbody2D>(out Rigidbody2D rb))
+            if (projectile.TryGetComponent<DealDamage>(out DealDamage dealDmg))     //Setting the owner of projectile
+                dealDmg.SetOwner(OwnerClientId);
+
+            if (projectile.TryGetComponent<Rigidbody2D>(out Rigidbody2D rb))        //Giving velocity to owner's projectile
                 rb.velocity = rb.transform.up * _projectileSO.ProjectileSpeed;
 
             SpawnDummyProjectileClientRpc(spawnPos, direction);

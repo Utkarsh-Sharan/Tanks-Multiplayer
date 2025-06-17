@@ -17,3 +17,4 @@ MonoBehaviour:
   ProjectileSpeed: 30
   FireRate: 0.75
   MuzzleFlashDuration: 0.075
+  DamageAmount: 5
