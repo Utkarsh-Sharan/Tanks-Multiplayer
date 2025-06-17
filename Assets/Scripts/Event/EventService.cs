@@ -1,5 +1,6 @@
 using UnityEngine;
 using Game.Utilities;
+using Game.Heal;
 
 namespace Game.Event
 {
