@@ -7,7 +7,7 @@ namespace Game.Coin
     {
         [SerializeField] private SpriteRenderer _coinSprite;
 
-        protected int coinValue;
+        protected int coinValue = 10;
         protected bool alreadyCollected;
 
         public abstract int Collect();
