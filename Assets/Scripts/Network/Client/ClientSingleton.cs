@@ -5,17 +5,18 @@ namespace Game.Network
 {
     public class ClientSingleton : GenericMonoSingleton<ClientSingleton>
     {
-        private ClientGameManager _clientGameManager;
+        public ClientGameManager ClientGameManager { get; private set; }
 
         protected override void Awake()
         {
             base.Awake();
         }
 
-        public async Task CreateClient()
+        public async Task<bool> CreateClient()
         {
-            _clientGameManager = new ClientGameManager();
-            await _clientGameManager.InitAsync();
+            ClientGameManager = new ClientGameManager();
+
+            return await ClientGameManager.InitAsync();
         }
     }
 }

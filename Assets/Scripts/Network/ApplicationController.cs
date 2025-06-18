@@ -24,12 +24,15 @@ namespace Game.Network
             else
             {
                 ClientSingleton clientSingleton = Instantiate(_clientPrefab);
-                await clientSingleton.CreateClient();
+                bool authenticated = await clientSingleton.CreateClient();
 
                 HostSingleton hostSingleton = Instantiate(_hostPrefab);
                 hostSingleton.CreateHost();
 
-                //then go to main menu
+                if (authenticated)
+                    clientSingleton.ClientGameManager.GoToMenu();
+                //else
+                //    Debug.Log("Failed");
             }
         }
     }
