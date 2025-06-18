@@ -601,6 +601,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inputSO: {fileID: 11400000, guid: 6557a6d71a47ab447909a911167ab573, type: 2}
   _projectileSO: {fileID: 11400000, guid: 19ae957f46304fb49bac2d7433749248, type: 2}
+  _coinWallet: {fileID: 2345012575961092226}
   _projectileSpawnPosition: {fileID: 2187703721134958709}
   _muzzleFlashObject: {fileID: 7350033893257646794}
   _playerCollider: {fileID: 7369111363723272728}

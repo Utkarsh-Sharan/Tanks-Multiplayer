@@ -11,5 +11,6 @@ namespace Game.ScriptableObj
         public float FireRate;
         public float MuzzleFlashDuration;
         public int DamageAmount;
+        public int CostToFire;
     }
 }

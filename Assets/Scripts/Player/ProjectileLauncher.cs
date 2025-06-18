@@ -3,6 +3,7 @@ using UnityEngine;
 using Game.ScriptableObj;
 using Game.Event;
 using Game.Heal;
+using Game.Coin;
 
 namespace Game.Player
 {
@@ -10,12 +11,13 @@ namespace Game.Player
     {
         [SerializeField] private InputScriptableObject _inputSO;
         [SerializeField] private ProjectileScriptableObject _projectileSO;
+        [SerializeField] private CoinWallet _coinWallet;
         [SerializeField] private Transform _projectileSpawnPosition;
         [SerializeField] private GameObject _muzzleFlashObject;
         [SerializeField] private Collider2D _playerCollider;
 
         private bool _shouldFire;
-        private float _previousFireTime;
+        private float _timer;
         private float _muzzleFlashTimer;
 
         public override void OnNetworkSpawn()
@@ -44,21 +46,32 @@ namespace Game.Player
             if (!IsOwner)
                 return;
 
+            if(_timer > 0f)
+                _timer -= Time.deltaTime;
+
             if (!_shouldFire)
                 return;
 
-            if (Time.time < 1 / _projectileSO.FireRate + _previousFireTime)
+            if (_timer > 0)
+                return;
+
+            if (_coinWallet.TotalCoins.Value < _projectileSO.CostToFire)
                 return;
 
             PrimaryFireServerRpc(_projectileSpawnPosition.position, _projectileSpawnPosition.up);
             SpawnDummyProjectile(_projectileSpawnPosition.position, _projectileSpawnPosition.up);
 
-            _previousFireTime = Time.time;
+            _timer = 1 / _projectileSO.FireRate;
         }
 
         [ServerRpc]
         private void PrimaryFireServerRpc(Vector3 spawnPos, Vector3 direction)
         {
+            if (_coinWallet.TotalCoins.Value < _projectileSO.CostToFire)
+                return;
+
+            _coinWallet.SpendCoins(_projectileSO.CostToFire);
+
             GameObject projectile = Instantiate(_projectileSO.ServerProjectilePrefab, spawnPos, Quaternion.identity);
             projectile.transform.up = direction;
 
