@@ -1,6 +1,7 @@
 using UnityEngine;
 using Game.Utilities;
 using Game.Heal;
+using Game.Coin;
 
 namespace Game.Event
 {
@@ -9,6 +10,7 @@ namespace Game.Event
         public EventController<bool> OnPrimaryFireEvent { get; private set; }
         public EventController<Health> OnDeathEvent { get; private set; }
         public EventController<Vector2> OnPlayerMoveEvent { get; private set; }
+        public EventController<RespawningCoin> OnCoinCollectedEvent { get; private set; }
 
         protected override void Awake()
         {
@@ -22,6 +24,7 @@ namespace Game.Event
             OnPrimaryFireEvent = new EventController<bool>();
             OnDeathEvent = new EventController<Health>();
             OnPlayerMoveEvent = new EventController<Vector2>();
+            OnCoinCollectedEvent = new EventController<RespawningCoin>();
         }
     }
 }

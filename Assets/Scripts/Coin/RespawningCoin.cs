@@ -1,0 +1,40 @@
+using UnityEngine;
+using Game.Event;
+
+namespace Game.Coin
+{
+    public class RespawningCoin : Coin
+    {
+        private Vector3 _previousPosition;
+
+        private void Update()
+        {
+            if (_previousPosition != transform.position)
+                Show(true);
+
+            _previousPosition = transform.position;
+        }
+
+        public override int Collect()
+        {
+            if (!IsServer)
+            {
+                Show(false);
+                return 0;
+            }
+
+            if (alreadyCollected)
+                return 0;
+
+            alreadyCollected = true;
+            EventService.Instance.OnCoinCollectedEvent.InvokeEvent(this);
+
+            return coinValue;
+        }
+
+        public void Reset()
+        {
+            alreadyCollected = false;
+        }
+    }
+}
