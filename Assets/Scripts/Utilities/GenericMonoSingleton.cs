@@ -12,6 +12,7 @@ namespace Game.Utilities
             if (_instance == null)
             {
                 _instance = (T)this;
+                DontDestroyOnLoad(gameObject);
             }
             else
                 Destroy(this.gameObject);
