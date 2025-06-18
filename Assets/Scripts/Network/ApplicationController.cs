@@ -31,8 +31,6 @@ namespace Game.Network
 
                 if (authenticated)
                     clientSingleton.ClientGameManager.GoToMenu();
-                //else
-                //    Debug.Log("Failed");
             }
         }
     }
