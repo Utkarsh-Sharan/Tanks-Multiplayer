@@ -7,6 +7,7 @@ namespace Game.Utilities
 
         //Strings
         public const string UDP = "udp";
+        public const string DTLS = "dtls";
         public const string GAME_SCENE_NAME = "GameScene";
     }
 }

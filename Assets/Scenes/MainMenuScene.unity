@@ -1609,6 +1609,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hostButton: {fileID: 1985430948}
+  _clientButton: {fileID: 1797463736}
+  _joinCodeField: {fileID: 1348007399}
 --- !u!1 &1985430946
 GameObject:
   m_ObjectHideFlags: 0

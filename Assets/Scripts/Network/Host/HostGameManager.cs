@@ -40,7 +40,7 @@ namespace Game.Network
             }
 
             UnityTransport transport = NetworkManager.Singleton.GetComponent<UnityTransport>();
-            RelayServerData relayServerData = new RelayServerData(_allocation, Constants.UDP);
+            RelayServerData relayServerData = new RelayServerData(_allocation, Constants.DTLS);
 
             transport.SetRelayServerData(relayServerData);
 
