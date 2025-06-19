@@ -1,18 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using Game.Network;
 
-public class MainMenu : MonoBehaviour
+namespace Game.Ui
 {
-    // Start is called before the first frame update
-    void Start()
+    public class MainMenu : MonoBehaviour
     {
-        
-    }
+        [SerializeField] private Button _hostButton;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private void OnEnable()
+        {
+            _hostButton.onClick.AddListener(StartHost);
+        }
+
+        private async void StartHost()
+        {
+            await HostSingleton.Instance.HostGameManager.StartHostAsync();
+        }
+
+        private void OnDisable()
+        {
+            _hostButton.onClick.RemoveListener(StartHost);
+        }
     }
 }

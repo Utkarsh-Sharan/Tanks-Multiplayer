@@ -1,11 +1,10 @@
 using Game.Utilities;
-using System.Threading.Tasks;
 
 namespace Game.Network
 {
     public class HostSingleton : GenericMonoSingleton<HostSingleton>
     {
-        private HostGameManager _hostGameManager;
+        public HostGameManager HostGameManager { get; private set; }
 
         protected override void Awake()
         {
@@ -14,7 +13,7 @@ namespace Game.Network
 
         public void CreateHost()
         {
-            _hostGameManager = new HostGameManager();
+            HostGameManager = new HostGameManager();
         }
     }
 }
